@@ -6,9 +6,8 @@ const app = express()
 
 require('dotenv').config()
 app.use(cors({
-    origin: ['https://assignment-inside-out-qfq4.vercel.app/'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
+   origin: '*',
+   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }))
 
 const PORT = process.env.PORT
