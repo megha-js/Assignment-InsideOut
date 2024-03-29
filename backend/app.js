@@ -5,6 +5,11 @@ const {readdirSync} = require('fs')
 const app = express()
 
 require('dotenv').config()
+app.use(cors({
+    origin: ['https://assignment-inside-out-qfq4.vercel.app/'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+}))
 
 const PORT = process.env.PORT
 
