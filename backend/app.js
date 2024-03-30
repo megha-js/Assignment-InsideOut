@@ -5,15 +5,15 @@ const {readdirSync} = require('fs')
 const app = express()
 
 require('dotenv').config()
-app.use(cors({
-   origin: '*',
-}))
+
 
 const PORT = process.env.PORT
 
 //middlewares
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+   origin: '*',
+}))
 
 //routes
 readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
