@@ -11,12 +11,11 @@ const PORT = process.env.PORT
 
 //middlewares
 app.use(express.json())
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+app.use(cors({
+    origin: ['https://assignment-inside-out-qfq4.vercel.app/', 'http://localhost:3000', 'http://127.0.0.1:3000'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 
 //routes
 readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
