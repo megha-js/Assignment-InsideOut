@@ -2,12 +2,14 @@ import React, { useContext, useState } from "react"
 import axios from 'axios'
 
 
-const BASE_URL = "https://backend-ruddy-xi.vercel.app/api/v1/";
+const BASE_URL = "/api/v1/";
 
 let config = {
     headers: {
         "Content-Type": "application/json",
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept"
     }
 }
 
