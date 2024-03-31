@@ -4,14 +4,7 @@ import axios from 'axios'
 
 const BASE_URL = "/api/v1/";
 
-let config = {
-    headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept"
-    }
-}
+
 
 
 const GlobalContext = React.createContext()
@@ -25,7 +18,7 @@ export const GlobalProvider = ({ children }) => {
 
     //calculate incomes
     const addIncome = async (income) => {
-        const response = await axios.post(`${BASE_URL}add-income`, income, config)
+        const response = await axios.post(`${BASE_URL}add-income`, income)
             .catch((err) => {
                 setError(err.response.data.message)
             })
@@ -33,13 +26,13 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const getIncomes = async () => {
-        const response = await axios.get(`${BASE_URL}get-incomes`, config)
+        const response = await axios.get(`${BASE_URL}get-incomes`)
         setIncomes(response.data)
         console.log(response.data)
     }
 
     const deleteIncome = async (id) => {
-        const res = await axios.delete(`${BASE_URL}delete-income/${id}`, config)
+        const res = await axios.delete(`${BASE_URL}delete-income/${id}`)
         getIncomes()
     }
 
@@ -55,7 +48,7 @@ export const GlobalProvider = ({ children }) => {
 
     //calculate incomes
     const addExpense = async (income) => {
-        const response = await axios.post(`${BASE_URL}add-expense`, income, config)
+        const response = await axios.post(`${BASE_URL}add-expense`, income)
             .catch((err) => {
                 setError(err.response.data.message)
             })
@@ -63,13 +56,13 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const getExpenses = async () => {
-        const response = await axios.get(`${BASE_URL}get-expenses`, config)
+        const response = await axios.get(`${BASE_URL}get-expenses`)
         setExpenses(response.data)
         console.log(response.data)
     }
 
     const deleteExpense = async (id) => {
-        const res = await axios.delete(`${BASE_URL}delete-expense/${id}`, config)
+        const res = await axios.delete(`${BASE_URL}delete-expense/${id}`)
         getExpenses()
     }
 
@@ -84,7 +77,7 @@ export const GlobalProvider = ({ children }) => {
 
     //calculate Investments
     const addInvestments = async (investment) => {
-        const response = await axios.post(`${BASE_URL}add-investment`, investment, config)
+        const response = await axios.post(`${BASE_URL}add-investment`, investment)
             .catch((err) => {
                 setError(err.response.data.message)
             })
@@ -92,12 +85,12 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const getInvestments = async () => {
-        const response = await axios.get(`${BASE_URL}get-investment`, config)
+        const response = await axios.get(`${BASE_URL}get-investment`)
         setInvestments(response.data)
         console.log(response.data)
     }
     const deleteInvestments = async (id) => {
-        const res = await axios.delete(`${BASE_URL}delete-investment/${id}`, config)
+        const res = await axios.delete(`${BASE_URL}delete-investment/${id}`)
         getInvestments()
     }
 
